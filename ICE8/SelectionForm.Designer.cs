@@ -228,6 +228,7 @@
             ComboBox_Career.Name = "ComboBox_Career";
             ComboBox_Career.Size = new Size(283, 40);
             ComboBox_Career.TabIndex = 14;
+            ComboBox_Career.SelectedIndexChanged += this.ComboBox_Career_SelectedIndexChanged;
             // 
             // Label_Careers
             // 

@@ -25,8 +25,10 @@ namespace ICE8
             [25, 30, 30, 35, 25, 35]  // Telepath
         ];
 
+        // Declaring Primary Stat TetBox Array
         TextBox[] PrimaryStatTextBoxes;
 
+        // Declaring Secondary Stat TextBox Array
         TextBox[] SecondaryStatTextBoxes;
 
         /// <summary>
@@ -40,6 +42,7 @@ namespace ICE8
             ComboBox_Career.Items.Clear();
             ComboBox_Career.Items.AddRange(Careers);
 
+            // Initialize Primary Stat TextBox Array
             PrimaryStatTextBoxes =
             [
                 TextBox_AGL,
@@ -50,6 +53,7 @@ namespace ICE8
                 TextBox_WIL
             ];
 
+            // Initialize Secondary Stat TextBox Array
             SecondaryStatTextBoxes =
             [
                 TextBox_AWA,
@@ -76,6 +80,18 @@ namespace ICE8
             TextBox_RES.Text = (Convert.ToInt32(TextBox_INT.Text) + Convert.ToInt32(TextBox_WIL.Text)).ToString();
         }
 
+        private void ComboBox_Career_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // If the ComboBox has been cleared, then return
+            if (ComboBox_Career.SelectedIndex < 0) { return; }
+
+            for (int attribute = 0; attribute < PrimaryStatTextBoxes.Length; attribute++)
+            {
+                PrimaryStatTextBoxes[attribute].Text = CareerStats[ComboBox_Career.SelectedIndex][attribute].ToString();
+            }
+
+            ComputeSecondaryAttributes();
+        }
 
         int Roll5d10()
         {
