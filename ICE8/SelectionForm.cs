@@ -10,7 +10,7 @@ namespace ICE8
             InitializeComponent();
         }
 
-        private void Button_Generate_Click(object sender, EventArgs e)
+        private void Button_Random_Click(object sender, EventArgs e)
         {
             TextBox_AGL.Text = Roll5d10().ToString();
             TextBox_STR.Text = Roll5d10().ToString();
@@ -18,7 +18,17 @@ namespace ICE8
             TextBox_PER.Text = Roll5d10().ToString();
             TextBox_INT.Text = Roll5d10().ToString();
             TextBox_WIL.Text = Roll5d10().ToString();
+
+            ComputeSecondaryAttributes();
         }
+
+        private void ComputeSecondaryAttributes()
+        {
+            TextBox_AWA.Text = (Convert.ToInt32(TextBox_AGL.Text) + Convert.ToInt32(TextBox_PER.Text)).ToString();
+            TextBox_TOU.Text = (Convert.ToInt32(TextBox_STR.Text) + Convert.ToInt32(TextBox_VGR.Text)).ToString();
+            TextBox_RES.Text = (Convert.ToInt32(TextBox_INT.Text) + Convert.ToInt32(TextBox_WIL.Text)).ToString();
+        }
+
 
         int Roll5d10()
         {
