@@ -53,8 +53,17 @@
             TextBox_TOU = new TextBox();
             Label_RES = new Label();
             TextBox_RES = new TextBox();
+            CheckBox_ShowRandomButton = new CheckBox();
+            RadioButton_Human = new RadioButton();
+            GroupBox_Species = new GroupBox();
+            RadioButton_Robot = new RadioButton();
+            RadioButton_Alien = new RadioButton();
+            Button_Reset = new Button();
+            Button_Submit = new Button();
+            TextBox_Name = new TextBox();
             Panel_PrimaryAttributes.SuspendLayout();
             Panel_SecondaryAttributes.SuspendLayout();
+            GroupBox_Species.SuspendLayout();
             SuspendLayout();
             // 
             // Label_AGL
@@ -179,9 +188,10 @@
             // 
             // Button_Random
             // 
-            Button_Random.BackColor = SystemColors.ActiveCaption;
+            Button_Random.BackColor = SystemColors.HotTrack;
             Button_Random.Font = new Font("Calibri", 12F);
-            Button_Random.Location = new Point(351, 592);
+            Button_Random.ForeColor = SystemColors.ButtonHighlight;
+            Button_Random.Location = new Point(297, 710);
             Button_Random.Name = "Button_Random";
             Button_Random.Size = new Size(170, 70);
             Button_Random.TabIndex = 12;
@@ -205,7 +215,7 @@
             Panel_PrimaryAttributes.Controls.Add(Label_VGR);
             Panel_PrimaryAttributes.Controls.Add(TextBox_VGR);
             Panel_PrimaryAttributes.Controls.Add(Label_PER);
-            Panel_PrimaryAttributes.Location = new Point(44, 166);
+            Panel_PrimaryAttributes.Location = new Point(55, 255);
             Panel_PrimaryAttributes.Name = "Panel_PrimaryAttributes";
             Panel_PrimaryAttributes.Size = new Size(654, 187);
             Panel_PrimaryAttributes.TabIndex = 13;
@@ -224,16 +234,16 @@
             // 
             ComboBox_Career.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBox_Career.FormattingEnabled = true;
-            ComboBox_Career.Location = new Point(44, 90);
+            ComboBox_Career.Location = new Point(55, 179);
             ComboBox_Career.Name = "ComboBox_Career";
             ComboBox_Career.Size = new Size(283, 40);
             ComboBox_Career.TabIndex = 14;
-            ComboBox_Career.SelectedIndexChanged += this.ComboBox_Career_SelectedIndexChanged;
+            ComboBox_Career.SelectedIndexChanged += ComboBox_Career_SelectedIndexChanged;
             // 
             // Label_Careers
             // 
             Label_Careers.Font = new Font("Calibri", 12F, FontStyle.Bold);
-            Label_Careers.Location = new Point(44, 48);
+            Label_Careers.Location = new Point(55, 137);
             Label_Careers.Name = "Label_Careers";
             Label_Careers.Size = new Size(285, 39);
             Label_Careers.TabIndex = 15;
@@ -250,9 +260,9 @@
             Panel_SecondaryAttributes.Controls.Add(TextBox_TOU);
             Panel_SecondaryAttributes.Controls.Add(Label_RES);
             Panel_SecondaryAttributes.Controls.Add(TextBox_RES);
-            Panel_SecondaryAttributes.Location = new Point(44, 370);
+            Panel_SecondaryAttributes.Location = new Point(55, 459);
             Panel_SecondaryAttributes.Name = "Panel_SecondaryAttributes";
-            Panel_SecondaryAttributes.Size = new Size(352, 187);
+            Panel_SecondaryAttributes.Size = new Size(352, 209);
             Panel_SecondaryAttributes.TabIndex = 16;
             // 
             // Label_SecondaryAttributes
@@ -325,23 +335,129 @@
             TextBox_RES.TabIndex = 8;
             TextBox_RES.TextAlign = HorizontalAlignment.Center;
             // 
+            // CheckBox_ShowRandomButton
+            // 
+            CheckBox_ShowRandomButton.AutoSize = true;
+            CheckBox_ShowRandomButton.Checked = true;
+            CheckBox_ShowRandomButton.CheckState = CheckState.Checked;
+            CheckBox_ShowRandomButton.Location = new Point(377, 181);
+            CheckBox_ShowRandomButton.Name = "CheckBox_ShowRandomButton";
+            CheckBox_ShowRandomButton.Size = new Size(290, 36);
+            CheckBox_ShowRandomButton.TabIndex = 17;
+            CheckBox_ShowRandomButton.Text = "Show Random Button?";
+            CheckBox_ShowRandomButton.UseVisualStyleBackColor = true;
+            // 
+            // RadioButton_Human
+            // 
+            RadioButton_Human.AutoSize = true;
+            RadioButton_Human.Checked = true;
+            RadioButton_Human.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RadioButton_Human.Location = new Point(35, 53);
+            RadioButton_Human.Name = "RadioButton_Human";
+            RadioButton_Human.Size = new Size(143, 43);
+            RadioButton_Human.TabIndex = 18;
+            RadioButton_Human.TabStop = true;
+            RadioButton_Human.Text = "Human";
+            RadioButton_Human.UseVisualStyleBackColor = true;
+            // 
+            // GroupBox_Species
+            // 
+            GroupBox_Species.Controls.Add(RadioButton_Human);
+            GroupBox_Species.Controls.Add(RadioButton_Robot);
+            GroupBox_Species.Controls.Add(RadioButton_Alien);
+            GroupBox_Species.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GroupBox_Species.Location = new Point(432, 459);
+            GroupBox_Species.Name = "GroupBox_Species";
+            GroupBox_Species.Size = new Size(277, 209);
+            GroupBox_Species.TabIndex = 19;
+            GroupBox_Species.TabStop = false;
+            GroupBox_Species.Text = "Species";
+            // 
+            // RadioButton_Robot
+            // 
+            RadioButton_Robot.AutoSize = true;
+            RadioButton_Robot.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RadioButton_Robot.Location = new Point(35, 102);
+            RadioButton_Robot.Name = "RadioButton_Robot";
+            RadioButton_Robot.Size = new Size(126, 43);
+            RadioButton_Robot.TabIndex = 19;
+            RadioButton_Robot.Text = "Robot";
+            RadioButton_Robot.UseVisualStyleBackColor = true;
+            // 
+            // RadioButton_Alien
+            // 
+            RadioButton_Alien.AutoSize = true;
+            RadioButton_Alien.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RadioButton_Alien.Location = new Point(35, 151);
+            RadioButton_Alien.Name = "RadioButton_Alien";
+            RadioButton_Alien.Size = new Size(114, 43);
+            RadioButton_Alien.TabIndex = 20;
+            RadioButton_Alien.Text = "Alien";
+            RadioButton_Alien.UseVisualStyleBackColor = true;
+            // 
+            // Button_Reset
+            // 
+            Button_Reset.BackColor = Color.Orange;
+            Button_Reset.Font = new Font("Calibri", 12F);
+            Button_Reset.Location = new Point(55, 710);
+            Button_Reset.Name = "Button_Reset";
+            Button_Reset.Size = new Size(170, 70);
+            Button_Reset.TabIndex = 20;
+            Button_Reset.Text = "Reset";
+            Button_Reset.UseVisualStyleBackColor = false;
+            // 
+            // Button_Submit
+            // 
+            Button_Submit.BackColor = Color.ForestGreen;
+            Button_Submit.Font = new Font("Calibri", 12F);
+            Button_Submit.ForeColor = SystemColors.ButtonHighlight;
+            Button_Submit.Location = new Point(539, 710);
+            Button_Submit.Name = "Button_Submit";
+            Button_Submit.Size = new Size(170, 70);
+            Button_Submit.TabIndex = 21;
+            Button_Submit.Text = "Submit";
+            Button_Submit.UseVisualStyleBackColor = false;
+            // 
+            // TextBox_Name
+            // 
+            TextBox_Name.BorderStyle = BorderStyle.FixedSingle;
+            TextBox_Name.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TextBox_Name.Location = new Point(63, 64);
+            TextBox_Name.Name = "TextBox_Name";
+            TextBox_Name.PlaceholderText = "Enter Your Name";
+            TextBox_Name.Size = new Size(277, 47);
+            TextBox_Name.TabIndex = 22;
+            // 
             // SelectionForm
             // 
+            AcceptButton = Button_Submit;
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(919, 724);
+            ClientSize = new Size(774, 829);
+            Controls.Add(TextBox_Name);
+            Controls.Add(Button_Reset);
+            Controls.Add(Button_Random);
+            Controls.Add(Button_Submit);
+            Controls.Add(GroupBox_Species);
+            Controls.Add(CheckBox_ShowRandomButton);
             Controls.Add(Panel_SecondaryAttributes);
             Controls.Add(Label_Careers);
             Controls.Add(ComboBox_Career);
             Controls.Add(Panel_PrimaryAttributes);
-            Controls.Add(Button_Random);
+            MaximizeBox = false;
+            MaximumSize = new Size(800, 900);
+            MinimumSize = new Size(800, 900);
             Name = "SelectionForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Selection Form";
             Panel_PrimaryAttributes.ResumeLayout(false);
             Panel_PrimaryAttributes.PerformLayout();
             Panel_SecondaryAttributes.ResumeLayout(false);
             Panel_SecondaryAttributes.PerformLayout();
+            GroupBox_Species.ResumeLayout(false);
+            GroupBox_Species.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -371,5 +487,13 @@
         private TextBox TextBox_TOU;
         private Label Label_RES;
         private TextBox TextBox_RES;
+        private CheckBox CheckBox_ShowRandomButton;
+        private RadioButton RadioButton_Human;
+        private GroupBox GroupBox_Species;
+        private RadioButton RadioButton_Alien;
+        private RadioButton RadioButton_Robot;
+        private Button Button_Reset;
+        private Button Button_Submit;
+        private TextBox TextBox_Name;
     }
 }
