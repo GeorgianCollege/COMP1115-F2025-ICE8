@@ -2,6 +2,15 @@ using System;
 
 namespace ICE8
 {
+    enum Career
+    {
+        Army,
+        Psion,
+        Rogue,
+        Telepath
+    }
+
+
     public partial class SelectionForm : Form
     {
         Random random = new Random();
