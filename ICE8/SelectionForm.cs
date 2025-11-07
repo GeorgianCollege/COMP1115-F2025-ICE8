@@ -10,13 +10,33 @@ namespace ICE8
         Telepath
     }
 
-
     public partial class SelectionForm : Form
     {
+        // Class Variables
         Random random = new Random();
+
+        string[] Careers = Enum.GetNames<Career>();
+
+        int[][] CareerStats =
+        [
+            [35, 35, 30, 30, 25, 25], // Army
+            [30, 35, 30, 25, 35, 25], // Psion
+            [35, 30, 30, 35, 25, 25], // Rogue
+            [25, 30, 30, 35, 25, 35]  // Telepath
+        ];
+
+        TextBox[] PrimaryStatTextBoxes;
+
+        TextBox[] SecondaryStatTextBoxes;
+
+        /// <summary>
+        /// The Constructor for SelectionForm
+        /// </summary>
         public SelectionForm()
         {
             InitializeComponent();
+
+
         }
 
         private void Button_Random_Click(object sender, EventArgs e)
