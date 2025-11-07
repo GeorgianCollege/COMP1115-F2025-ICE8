@@ -67,7 +67,7 @@ namespace ICE8
         {
             foreach (TextBox stat in PrimaryStatTextBoxes)
             {
-                stat.Text = Roll5d10().ToString();
+                stat.Text = Roll6d10DropLowest().ToString();
             }
 
             ComputeSecondaryAttributes();
@@ -93,6 +93,10 @@ namespace ICE8
             ComputeSecondaryAttributes();
         }
 
+        /// <summary>
+        /// Deprecated: Rolls 5d10 and returns the total
+        /// </summary>
+        /// <returns></returns>
         int Roll5d10()
         {
             int total = 0;
@@ -102,5 +106,28 @@ namespace ICE8
             }
             return total;
         }
+
+        /// <summary>
+        /// Rolls 6d10, drops the lowest die, and returns the total of the remaining dice
+        /// </summary>
+        /// <returns></returns>
+        int Roll6d10DropLowest()
+        {
+            int[] rolls = new int[6];
+            for (int die = 0; die < 6; die++)
+            {
+                rolls[die] = random.Next(1, 11);
+            }
+
+            Array.Sort(rolls);
+
+            int total = 0;
+            for (int die = 1; die < 6; die++)
+            {
+                total += rolls[die];
+            }
+            return total;
+        }
+
     }
 }
