@@ -36,17 +36,35 @@ namespace ICE8
         {
             InitializeComponent();
 
+            // Populate the ComboBox with career options
+            ComboBox_Career.Items.Clear();
+            ComboBox_Career.Items.AddRange(Careers);
+
+            PrimaryStatTextBoxes =
+            [
+                TextBox_AGL,
+                TextBox_STR,
+                TextBox_VGR,
+                TextBox_PER,
+                TextBox_INT,
+                TextBox_WIL
+            ];
+
+            SecondaryStatTextBoxes =
+            [
+                TextBox_AWA,
+                TextBox_TOU,
+                TextBox_RES
+            ];
 
         }
 
         private void Button_Random_Click(object sender, EventArgs e)
         {
-            TextBox_AGL.Text = Roll5d10().ToString();
-            TextBox_STR.Text = Roll5d10().ToString();
-            TextBox_VGR.Text = Roll5d10().ToString();
-            TextBox_PER.Text = Roll5d10().ToString();
-            TextBox_INT.Text = Roll5d10().ToString();
-            TextBox_WIL.Text = Roll5d10().ToString();
+            foreach (TextBox stat in PrimaryStatTextBoxes)
+            {
+                stat.Text = Roll5d10().ToString();
+            }
 
             ComputeSecondaryAttributes();
         }
